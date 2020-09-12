@@ -1,3 +1,9 @@
 .vs
+AireLogicCLIApp/bin/Debug/
 AireLogicCLIApp/obj/
 AireLogicCLIApp/obj/AireLogicCLIApp.csproj.nuget.dgspec.json
+
+
+AireLogicTests/bin/Debug/
+AireLogicTests/obj/
+AireLogicTests/obj/AireLogicTests.csproj.nuget.dgspec.json
