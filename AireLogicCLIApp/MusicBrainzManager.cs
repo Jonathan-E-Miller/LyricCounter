@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -52,7 +53,7 @@ namespace AireLogicCLIApp
     public async Task<ReleaseGroupsWrapper> GetAlbumReleaseGroups(string artistId)
     {
       ReleaseGroupsWrapper releaseGroup = null;
-      
+
       string endpoint = String.Format("artist/{0}?inc=release-groups&type=album", artistId);
       string responseData = await _clientManager.GetJsonResponse(endpoint);
 
@@ -89,6 +90,28 @@ namespace AireLogicCLIApp
       }
       await Task.Delay(1000);
       return release;
+    }
+
+    /// <summary>
+    /// Find all tracks on a specfic album release
+    /// </summary>
+    /// <param name="releaseId"></param>
+    /// <returns>A list of Track Object</returns>
+    public async Task<List<Track>> FindTracksOnRelease(string releaseId)
+    {
+      List<Track> tracks = new List<Track>();
+
+      string endpoint = String.Format("release/{0}?inc=recordings", releaseId);
+
+      string responseData = await _clientManager.GetJsonResponse(endpoint);
+
+      MediaWrapper wrapper = JsonConvert.DeserializeObject<MediaWrapper>(responseData);
+      if (wrapper.Mediums.Count > 0)
+      {
+        tracks = wrapper.Mediums[0].Tracks;
+      }
+
+      return tracks;
     }
   }
 }

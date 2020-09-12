@@ -3,16 +3,19 @@ using NUnit.Framework;
 using AireLogicCLIApp;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace AireLogicTests
 {
   public class Tests
   {
     MusicBrainzManager _clientManager;
+    LyricApiManager _lyricManager;
     [SetUp]
     public void Setup()
     {
       _clientManager = new MusicBrainzManager();
+      _lyricManager = new LyricApiManager();
     }
 
     [TestCase("Coldplay", "cc197bad-dc9c-440d-a5b5-d52ba2e14234")]
@@ -45,6 +48,32 @@ namespace AireLogicTests
       {
         Assert.IsNull(release);
       }
+    }
+
+    [TestCase("c1bea9b6-2aa2-4ae9-b1ac-c8d99c0e04fd", 10)]
+    public async Task TestGetTracksFromRelease(string release, int trackCount)
+    {
+      List<Track> tracks = await _clientManager.FindTracksOnRelease(release);
+
+      Assert.AreEqual(tracks.Count, trackCount);
+    }
+
+    [TestCase("Coldplay", "Yellow", true)]
+    [TestCase("Green day", "Basket Case", true)]
+    [TestCase("Should", "Fail", false)]
+    public async Task TestGetSongLyrics(string artist, string song, bool shouldPass)
+    {
+      string lyrics = await _lyricManager.GetSongLyrics(artist, song);
+
+      if (shouldPass)
+      {
+        Assert.IsNotNull(lyrics);
+      }
+      else
+      {
+        Assert.IsNull(lyrics);
+      }
+
     }
   }
 }
