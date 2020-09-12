@@ -24,13 +24,4 @@ namespace AireLogicCLIApp
     [JsonProperty("media")]
     public List<Media> Mediums { get; set; }
   }
-
-  public class Track
-  {
-    [JsonProperty("position")]
-    public int Position { get; set; }
-   
-    [JsonProperty("title")]
-    public string Title { get; set; }
-  }
 }
