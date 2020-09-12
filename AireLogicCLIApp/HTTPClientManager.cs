@@ -37,7 +37,10 @@ namespace AireLogicCLIApp
       string responseData = null;
       using (var response = await _httpClient.GetAsync(endpoint))
       {
-        responseData = await response.Content.ReadAsStringAsync();
+        if (response.IsSuccessStatusCode)
+        {
+          responseData = await response.Content.ReadAsStringAsync();
+        }
       }
       return responseData;
     }
