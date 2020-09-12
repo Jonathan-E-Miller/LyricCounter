@@ -4,6 +4,7 @@ using AireLogicCLIApp;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Collections.Generic;
+using System;
 
 namespace AireLogicTests
 {
@@ -11,11 +12,48 @@ namespace AireLogicTests
   {
     MusicBrainzManager _clientManager;
     LyricApiManager _lyricManager;
+    Artist _artist;
     [SetUp]
     public void Setup()
     {
       _clientManager = new MusicBrainzManager();
       _lyricManager = new LyricApiManager();
+
+
+      _artist = new Artist()
+      {
+        Name = "Test",
+        Albums = new List<Album>()
+        {
+          new Album("One", new List<Track>() {
+            new Track()
+            {
+              Lyrics = "These are some",
+              Title = "Test Song"
+            },
+            new Track()
+            {
+              Lyrics = "Pretend Song Lyrics",
+              Title = "Test Song"
+            },
+            new Track()
+            {
+              Lyrics = "For Testing purposes only",
+              Title = "Test Song"
+            },
+            new Track()
+            {
+              Lyrics = "If our statistic manager\nclass    and\nit's functions",
+              Title = "Test Song"
+            },
+            new Track()
+            {
+              Lyrics = "Work Properly",
+              Title = "Test Song"
+            },
+          })
+        }
+      };
     }
 
     [TestCase("Coldplay", "cc197bad-dc9c-440d-a5b5-d52ba2e14234")]
@@ -73,7 +111,23 @@ namespace AireLogicTests
       {
         Assert.IsNull(lyrics);
       }
+    }
 
+    [TestCase]
+    public void TestAverage()
+    {
+      StatisticManager statisticManager = new StatisticManager(_artist);
+      double average = statisticManager.CalculateAverageNumberOfWordsInSong();
+      Assert.AreEqual(average, 4);
+
+    }
+
+    [TestCase]
+    public void TestStandardDeviation()
+    {
+      StatisticManager statisticManager = new StatisticManager(_artist);
+      double stdDev = statisticManager.CalculateStandardDeviation();
+      Assert.AreEqual(Math.Round(stdDev, 1), 2.1);
     }
   }
 }

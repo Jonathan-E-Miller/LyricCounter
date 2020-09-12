@@ -43,21 +43,28 @@ namespace AireLogicCLIApp
       if (artistId != null)
       {
         ReleaseGroupsWrapper rgw = await musicBrainzManager.GetAlbumReleaseGroups(artistId);
+
+        // some variables to give the user some feedback.
+        int progress = 0;
+        int total = rgw.ReleaseGroups.Count;
         // go through all release group objects
         foreach (ReleaseGroup rg in rgw.ReleaseGroups)
         {
+          progress++;
           // for a release group find the UK or US version.
           Release release = await musicBrainzManager.GetGBUSVersion(rg.Id);
          
           // if we have a UK or US version
           if (release != null)
           {
+            WriteInformation(String.Format("Album {0}/{1}...", progress, total));
+            WriteInformation(String.Format("Artist {0} has Album {1}", artistName, rg.Title));
             // Get all tracks for the release
             List<Track> tracks = await musicBrainzManager.FindTracksOnRelease(release.Id);
             foreach(Track track in tracks)
             {
               track.Lyrics = await lyricApiManager.GetSongLyrics(artistName, track.Title);
-              WriteInformation(String.Format("Artist {0} has Album {1} with track {2}", artistName, rg.Title, track.Title));
+              WriteInformation(String.Format("\t Track {0} with {1} Words", track.Title, StringHelper.WordCount(track.Lyrics)));
             }
             // Create the Artist object
             artist = new Artist() { Name = artistName };
@@ -70,6 +77,14 @@ namespace AireLogicCLIApp
           }
         }
       }
+      if (artist != null)
+      {
+        StatisticManager manager = new StatisticManager(artist);
+        double average = manager.CalculateAverageNumberOfWordsInSong();
+        double standardDev = manager.CalculateStandardDeviation();
+        WriteResult(String.Format("Average Number of words = {0}\nStandard Deviation = {1}", average, standardDev));
+      }
+     
       WriteResult("*********************************DONE*********************************");
       return artist;
     }

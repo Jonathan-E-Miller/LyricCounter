@@ -41,9 +41,9 @@ namespace AireLogicCLIApp
 
         lyrics = dict["lyrics"];
       }
-      catch (Exception e)
+      catch (Exception)
       {
-        Console.WriteLine(e.Message);
+        
       }
       return lyrics;
     }
