@@ -13,7 +13,7 @@ namespace AireLogicCLIApp
 
     public MusicBrainzManager()
     {
-      _clientManager = new HTTPClientManager("https://musicbrainz.org/ws/2/",1000);
+      _clientManager = new HTTPClientManager("https://musicbrainz.org/ws/2/", 1000);
     }
 
     /// <summary>
@@ -62,6 +62,33 @@ namespace AireLogicCLIApp
       }
 
       return releaseGroup;
+    }
+
+    /// <summary>
+    /// Gets all releases from a given release group and searches for either a Uk or US release.
+    /// </summary>
+    /// <param name="releaseGroupId">The id of the release groups to search</param>
+    /// <returns>The Release object which can be null</returns>
+    public async Task<Release> GetGBUSVersion(string releaseGroupId)
+    {
+      Release release = null;
+
+      string endpoint = String.Format("release-group/{0}?inc=releases", releaseGroupId);
+
+      string responseData = await _clientManager.GetJsonResponse(endpoint);
+
+      if (responseData != null)
+      {
+        ReleaseWrapper releaseWrapper = JsonConvert.DeserializeObject<ReleaseWrapper>(responseData);
+        Release releaseSearchResult = releaseWrapper.Releases.Where(r => r.Country == "GB" || r.Country == "US").FirstOrDefault();
+
+        if (releaseSearchResult != null)
+        {
+          release = releaseSearchResult;
+        }
+      }
+      await Task.Delay(1000);
+      return release;
     }
   }
 }

@@ -25,10 +25,26 @@ namespace AireLogicTests
 
     [TestCase("cc197bad-dc9c-440d-a5b5-d52ba2e14234")]
     [TestCase("084308bd-1654-436f-ba03-df6697104e19")]
-    public async Task GetReleseGroups(string artistId)
+    public async Task TestGetReleaseGroups(string artistId)
     {
       ReleaseGroupsWrapper releaseGroupWrapper = await _clientManager.GetAlbumReleaseGroups(artistId);
       Assert.NotNull(releaseGroupWrapper);
+    }
+
+    [TestCase("c58228d1-05e9-3ce0-83f6-b0d33ffcaa90", true)]
+    [TestCase("xxxxxx-bad-id-xxxxx", false)]
+    public async Task TestGetUkUSVersion(string releaseGroupId, bool shouldPass)
+    {
+      Release release = await _clientManager.GetGBUSVersion(releaseGroupId);
+
+      if (shouldPass)
+      {
+        Assert.IsNotNull(release);
+      }
+      else
+      {
+        Assert.IsNull(release);
+      }
     }
   }
 }
