@@ -13,7 +13,7 @@ namespace AireLogicCLIApp
 
     public MusicBrainzManager()
     {
-      _clientManager = new HTTPClientManager("https://musicbrainz.org/ws/2/");
+      _clientManager = new HTTPClientManager("https://musicbrainz.org/ws/2/",1000);
     }
 
     /// <summary>
