@@ -1,0 +1,14 @@
+C:\Users\jonny\source\repos\LyricCounter\LyricCounterApp\bin\Debug\netcoreapp3.1\LyricCounterApp.exe
+C:\Users\jonny\source\repos\LyricCounter\LyricCounterApp\bin\Debug\netcoreapp3.1\LyricCounterApp.deps.json
+C:\Users\jonny\source\repos\LyricCounter\LyricCounterApp\bin\Debug\netcoreapp3.1\LyricCounterApp.runtimeconfig.json
+C:\Users\jonny\source\repos\LyricCounter\LyricCounterApp\bin\Debug\netcoreapp3.1\LyricCounterApp.runtimeconfig.dev.json
+C:\Users\jonny\source\repos\LyricCounter\LyricCounterApp\bin\Debug\netcoreapp3.1\LyricCounterApp.dll
+C:\Users\jonny\source\repos\LyricCounter\LyricCounterApp\bin\Debug\netcoreapp3.1\LyricCounterApp.pdb
+C:\Users\jonny\source\repos\LyricCounter\LyricCounterApp\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\jonny\source\repos\LyricCounter\LyricCounterApp\obj\Debug\netcoreapp3.1\LyricCounterApp.AssemblyInfoInputs.cache
+C:\Users\jonny\source\repos\LyricCounter\LyricCounterApp\obj\Debug\netcoreapp3.1\LyricCounterApp.AssemblyInfo.cs
+C:\Users\jonny\source\repos\LyricCounter\LyricCounterApp\obj\Debug\netcoreapp3.1\LyricCounterApp.csproj.CoreCompileInputs.cache
+C:\Users\jonny\source\repos\LyricCounter\LyricCounterApp\obj\Debug\netcoreapp3.1\LyricCounterApp.csproj.CopyComplete
+C:\Users\jonny\source\repos\LyricCounter\LyricCounterApp\obj\Debug\netcoreapp3.1\LyricCounterApp.dll
+C:\Users\jonny\source\repos\LyricCounter\LyricCounterApp\obj\Debug\netcoreapp3.1\LyricCounterApp.pdb
+C:\Users\jonny\source\repos\LyricCounter\LyricCounterApp\obj\Debug\netcoreapp3.1\LyricCounterApp.genruntimeconfig.cache

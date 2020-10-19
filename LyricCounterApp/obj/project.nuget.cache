@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "m10FJ8hFoSuB+Xqyn/13UzXYfv+JoktSFF8ZnAIi3wb6Oo0igvidHze9EQdZpJ40ljnKcImYgWFOCfWhviznEg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jonny\\source\\repos\\LyricCounter\\LyricCounterApp\\LyricCounterApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jonny\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
