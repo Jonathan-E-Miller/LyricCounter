@@ -1,9 +1,9 @@
 .vs
-AireLogicCLIApp/bin/Debug/
-AireLogicCLIApp/obj/
-AireLogicCLIApp/obj/AireLogicCLIApp.csproj.nuget.dgspec.json
+LyricCounterApp/bin/Debug/
+LyricCounterApp/obj/
+LyricCounterApp/obj/LyricCounterApp.csproj.nuget.dgspec.json
 
 
-AireLogicTests/bin/Debug/
-AireLogicTests/obj/
-AireLogicTests/obj/AireLogicTests.csproj.nuget.dgspec.json
+LyricCounterTests/bin/Debug/
+LyricCounterTests/obj/
+LyricCounterTests/obj/LyricCounterTests.csproj.nuget.dgspec.json
